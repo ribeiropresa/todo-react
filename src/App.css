@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+.bg-secondary {
+    background: linear-gradient(150deg, #adb5bd 5%, #000 35%, #adb5bd 100%);
+}
+input.form-control.text-info.ml-2 {
+    border-radius: 0.35rem;
+}
+.item-bg {
+    border-radius: 0.20rem;
+}
+.btn.btn-danger {
+    padding: 0.5rem;
+    line-height: 0;
+    margin-block-start: 0rem!important;
+    margin-block-end: 0rem!important;
+    border-radius: 1rem;
+}
+input.item-date {
+    height: 1.5rem!important;
+    width: 10rem!important;
+    font-size: 1rem;
+}
+input.item-date::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+}
+input.item-date::-webkit-calendar-picker-indicator:hover {
+    background: transparent;
+    cursor: pointer;
+}
+/* --- MEDIA QUERIES --- */
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	
+}
+@media (max-width: 576px) {
+	
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+} 
+
+/* Medium devices (tablets, 768px and up) */
+ @media (min-width: 768px) and (max-width: 991.98px) {
+	
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.title {
+        font-size: 1.6rem;
+    }    
+    .btn.btn-danger {
+        padding-top: 0.75rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        line-height: 0;
+        margin-block-start: 0rem!important;
+        margin-block-end: 0rem!important;
+        border-radius: 0.75rem;
+    }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	#root {
+        margin: auto;
+    }
+    #content, .input-group {
+        max-width: 1200px;
+        margin: auto;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .btn.btn-danger {
+        padding-top: 0.95rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        line-height: 0;
+        margin-block-start: 0rem!important;
+        margin-block-end: 0rem!important;
+        border-radius: 0.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    input.item-date {
+        padding-top: 0.25rem;
+        width: 12rem!important;
+        font-size: 1.2rem;
+    }
 }

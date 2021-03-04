@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import AddTodo from './components/AddTodo'
+import Header from './components/layout/Header'
+import Todos from './components/Todos'
+
+import axios from 'axios'
+import './App.css'
+
+class App extends Component {
+  state = {
+    todos: []
+  }
+
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=15')
+      .then(res => this.setState({ todos: res.data }))
+  }
+
+// Add Todos
+  addTodo = (title) => {
+    axios.post('https://jsonplaceholder.typicode.com/todos', {
+      title,
+      completed: false
+    })
+      .then(res => this.setState({ todos: 
+        [...this.state.todos, res.data] }))
+  } 
+
+// Toggle complete Todo
+  toggleComplete = (id) => {
+    this.setState({ todos: this.state.todos.map(todo => {
+      if(todo.id === id) {
+        todo.completed = !todo.completed
+      }
+      return todo
+    }) })
+  }
+
+// Delete Todo
+  deleteTodo = (id) => {
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(res => this.setState({ todos: 
+        [...this.state.todos.filter(todo => todo.id !== id)] }))
+   }
+
+  render() {
+    return (
+        <div>
+          <Header />
+          <AddTodo addTodo={this.addTodo} />
+          <Todos 
+            todos={this.state.todos} 
+            toggleComplete={this.toggleComplete}
+            deleteTodo={this.deleteTodo} 
+          />
+        </div>
+    )
+  }
 }
 
-export default App;
+export default App
+
